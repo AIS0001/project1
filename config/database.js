@@ -9,8 +9,8 @@ const pool = createPool({
     connectionLimit:10*/
     port:3306,
     host:"aisgroup.in",
-    user:"aisgr1bu",
-    password:"j?7+V7g3s+1+^YlL",
+    user:"aisgr1bu_user1",
+    password:"Realforce__123",
     database:"aisgr1bu_testproject",
     connectionLimit:10
 });
