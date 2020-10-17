@@ -2,7 +2,19 @@ const { verify } = require("jsonwebtoken");
 
 module.exports = {
     checkToken:(req,res,next)=>{
-        let token = req.get("autorization");
+        const token = req.header('auth-token');
+    if(!token) return res.status(401).send('Access Denied');
+
+    try{
+        const verified = verify(token,"MyLovePriyanka");
+        req.user=verified;
+        next();
+    }
+    catch(err)
+    {
+        res.status(401).send('Inavlid Token');
+    }
+       /* let token = req.get("autorization");
         if(token)
         {
             token = token.slice(7);
@@ -13,7 +25,7 @@ module.exports = {
                         success:0,
                         message:"Invalid token"
 
-                    })
+                    });
                 }else{
                     next();
                 }
@@ -24,7 +36,7 @@ module.exports = {
                 success:0,
                 message:"Access Denied"
             })
-        }
+        }*/
     }
 
 }
