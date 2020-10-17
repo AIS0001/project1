@@ -7,7 +7,7 @@ const pool = createPool({
     password:process.env.DB_PASSWORD,
     database:process.env.MYSQL_DB,
     connectionLimit:10*/
-    port:3306,
+    //port:3306,
     host:"aisgroup.in",
     user:"aisgr1bu_user1",
     password:"Realforce__123",
