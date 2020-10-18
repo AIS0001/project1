@@ -1,11 +1,12 @@
 const { create,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./delivery.service");
-const { genSaltSync,hashSync,compareSync } = require("bcrypt");
+//const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
 
     createdelivery:(req,res)=>{
 
         const body =req.body;
+        //console.log(body);
        // const salt = genSaltSync(10);
       //  body.password=hashSync(body.password,salt);
         create(body,(err,results)=>{
@@ -14,7 +15,7 @@ module.exports ={
                 console.log(err);
                 return res.status(500).json({
                     success:0,
-                    message:"Database connection error aho"
+                    message:"Database connection error "
                 });
             }
             return res.status(200).json({
@@ -70,7 +71,7 @@ module.exports ={
     updateUser:(req,res)=>{
         const body =req.body;
         const salt = genSaltSync(10);
-        body.password=hashSync(body.password,salt);
+       // body.password=hashSync(body.password,salt);
         updateUser(body,(err,results)=>{
             if(err)
             {
