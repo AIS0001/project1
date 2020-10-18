@@ -1,10 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 4000; 
-const userRouter = require("./api/users/user.router");
+const port = process.env.PORT || 7000; 
+const deliveryRouter = require("./api/delivery/delivery.router");
 app.use(express.json());
-app.use("/api/users",userRouter);
+app.use("/api/delivery",deliveryRouter);
 
 
 app.listen(port,()=>{

@@ -1,13 +1,13 @@
-const { create,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./user.service");
+const { create,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./delivery.service");
 const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
 
-    createUser:(req,res)=>{
+    createdelivery:(req,res)=>{
 
         const body =req.body;
-        const salt = genSaltSync(10);
-        body.password=hashSync(body.password,salt);
+       // const salt = genSaltSync(10);
+      //  body.password=hashSync(body.password,salt);
         create(body,(err,results)=>{
             if(err)
             {
@@ -46,7 +46,7 @@ module.exports ={
             });
         });
     },
-    getUsers:(req,res)=>{
+    getDelivery:(req,res)=>{
         getUsers((err,results)=>{
             if(err)
             {
@@ -131,7 +131,7 @@ module.exports ={
             if(result)
             {
                 results.password=undefined;
-                const jwt = sign({result,results},"MyLovePriyanka",{
+                const jwt = sign({result,results},process.env.SECRET_KEY,{
                     expiresIn:"1h"
                 });
                 return res.json({

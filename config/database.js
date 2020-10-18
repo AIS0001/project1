@@ -11,13 +11,13 @@ const pool = createPool({
     host:"localhost",
     user:"root",
     password:"Realforce@123",
-    database:"testproject",
+    database:"akshat",
     connectionLimit:10*/
 
     host:"aisgroup.in",
     user:"aisgr1bu_user1",
     password:"Realforce__123",
-    database:"aisgr1bu_testproject",
+    database:"aisgr1bu_akshat",
     connectionLimit:10
 });
 
