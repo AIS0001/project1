@@ -8,10 +8,30 @@ module.exports ={
 
         const body =req.body;
         console.log("Request ---", req.body);
-        console.log("Request file ---", req.file);
+        console.log("Request file ---", req.files);
        // const salt = genSaltSync(10);
       //  body.password=hashSync(body.password,salt);
-        create(body,(err,results)=>{
+     // now here we want to acess the req.files to get the file
+     // so to access Image it will be array of ojects in req.files
+     // i need to print it in console to see ok?ok
+     //console.log(req.files) //now go to post man and add the gallary filed and upload more than image and make request
+     // open post
+            // Gallary
+            let gallary = '';
+            req.files['gallary'].forEach(el => {
+             gallary += el.filename + ',';
+            });
+            gallary = gallary.substring(0, gallary.length - 1);
+            //End Gallary
+        create({
+            type: req.body.type,
+            invoice: req.body.invoice, 
+            datetime: req.body.datetime, 
+            party: req.body.party, 
+            proof1: req.files['proof1'][0].filename,
+            gallary: gallary,
+            Remark: req.body.Remark
+        },(err,results)=>{
             if(err)
             {
                 console.log(err);

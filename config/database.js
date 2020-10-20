@@ -7,12 +7,12 @@ const pool = createPool({
     password:process.env.DB_PASSWORD,
     database:process.env.MYSQL_DB,
     connectionLimit:10*/
-    /*port:3306,
+    port:3306,
     host:"localhost",
     user:"root",
     password:"Realforce@123",
     database:"akshat",
-    connectionLimit:10*/
+    connectionLimit:10
 
  
 });

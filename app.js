@@ -1,20 +1,24 @@
 require('dotenv').config();
 const express = require('express');
-let bodyParser = require('body-parser');
-const fs = require("fs");
+//const bodyParser = require("body-parser");
 
 
 const app = express();
-const port = process.env.PORT || 7000; 
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+const port = process.env.PORT || 3600; //can you solve this problem
 const deliveryRouter = require("./api/delivery/delivery.router");
 const partyRouter = require("./api/party/party.router");
 const adminRouter = require("./api/admin/admin.router");
-app.use(express.json());
 app.use("/api/delivery",deliveryRouter);
 app.use("/api/party",partyRouter);
 app.use("/api/admin",adminRouter);
-app.use(bodyParser.json({limit: '10mb', extended: true}))
- 
+//app.use(bodyParser.json({limit: '10mb', extended: true}));
+//you can do it with express so you didnt need to use body parser ok?
+// oh my god why you have port problem?,
+  //come to anydek.
+ // images too large
 app.listen(port,()=>{
     console.log("server up and running on port ",port);
 }) 
