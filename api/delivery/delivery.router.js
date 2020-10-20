@@ -16,10 +16,10 @@ const upload = multer({
    storage: storage,
    limits:{fileSize: 1000000},
 }).fields([
-   {
+ /*  {
      name: 'proof1',
      maxCount: 1,
-   },
+   },*/
    {
      name: 'gallary',
      maxCount: 5,
@@ -29,7 +29,7 @@ const upload = multer({
 
 // why you have error in port always? its linux problem? there is other things running cannot stop them
  router.post("/upload",upload,createdelivery); //this a middleware to access the req.files in controller for single 
-router.post("/",createdelivery);
+router.post("/",upload,createdelivery);
 router.get("/",checkToken,getDelivery);
 router.get("/:id",checkToken,getUserByid);
 router.patch("/",checkToken,updateUser);
