@@ -26,47 +26,6 @@ module.exports ={
 
         });
     },
-    getUserByid:(req,res)=>{
-        const id = req.param.id;
-        getUserByid(id,(err,results)=>{
-            if(err)
-            {
-                console.log(err);
-                return;
-            }
-            if(!results)
-            {
-                return res.json({
-                    success:0,
-                    message:"Record not found"
-                });
-            }
-            return res.json({
-                success:1,
-                data:results 
-            });
-        });
-    },
-    getDelivery:(req,res)=>{
-        getUsers((err,results)=>{
-            if(err)
-            {
-                console.log(err);
-                return;
-            }
-            if(!results)
-            {
-                return res.json({
-                    success:0,
-                    message:"Record not found"
-                });
-            }
-            return res.json({
-                success:1,
-                data:results 
-            });
-        });
-    },
     
     updateUser:(req,res)=>{
         const body =req.body;
@@ -113,7 +72,7 @@ module.exports ={
 
     login:(req,res)=>{
         const body = req.body;
-        getUserByuserEmail(body.email,(err,results)=>{
+        getUserByuserEmail(body.userid,(err,results)=>{
             if(err)
             {
                 console.log(err);
@@ -123,7 +82,7 @@ module.exports ={
             {
                return res.json({
                 success:0,
-                data:"Invalid Email or Password"
+                data:"Invalid Userid or Password"
 
                }) ;
           
@@ -132,7 +91,7 @@ module.exports ={
             if(result)
             {
                 results.password=undefined;
-                const jwt = sign({result,results},process.env.SECRET_KEY,{
+                const jwt = sign({result,results},"TXlMb3ZlUHJpeWFua2E",{
                     expiresIn:"1h"
                 });
                 return res.json({

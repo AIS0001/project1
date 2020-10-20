@@ -3,16 +3,15 @@ const pool = require("../../config/database");
 module.exports = {
     create:(data,callback)=>{
         pool.query(
-            `INSERT INTO delivery (type,invoice, datetime, party, proof1, proof2, proof3, Remark) 
-            VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)`,
+            `INSERT INTO delivery (type,invoice, datetime, party, proof1, Remark) 
+            VALUES ( ?, ?, ?, ?, ?, ?)`,
         [
             data.type,
             data.invoice,
             data.datetime,
             data.party,
             data.proof1,
-            data.proof2,
-            data.proof3,
+           
             data.Remark
         ],
         (error,results,fields)=>{
@@ -24,7 +23,9 @@ module.exports = {
         }
 
         );
+
     },
+    
 
     getUsers:callback=>{
         pool.query(`select * from delivery`,

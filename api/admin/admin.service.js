@@ -3,12 +3,11 @@ const pool = require("../../config/database");
 module.exports = {
     create:(data,callback)=>{
         pool.query(
-            `INSERT INTO admin (userid,password, type) 
-            VALUES ( ?, ?, ?)`,
+            `INSERT INTO admin (userid,password) 
+            VALUES ( ?, ?)`,
         [
             data.userid,
-            data.password,
-            data.type,
+            data.password
          
         ],
         (error,results,fields)=>{
@@ -23,7 +22,7 @@ module.exports = {
     },
 
     getUsers:callback=>{
-        pool.query(`select * from delivery`,
+        pool.query(`select * from admin`,
         [
 
         ],
@@ -38,7 +37,7 @@ module.exports = {
     },
 
     getUserByid:(id,callback)=>{
-        pool.query(`select * where id=?`,
+        pool.query(`select * from admin where id=?`,
         [id],
         (error,results,fields)=>{
             if(error)
@@ -50,42 +49,12 @@ module.exports = {
         );
     },
 
-    updateUser:(data,callback)=>{
-        pool.query(`update registration set fname=?,lname-?,gender=?,email=?,password=?,contact=? where id=?`,
-        [
-            data.fname,
-            data.lname,
-            data.gender,
-            data.email,
-            data.password,
-            data.contact,
-            data.id
-        ],
-        (error,results,fields)=>{
-            if(error)
-            {
-              return  callack(error);
-            }
-            return callback(null,results);
-        }
-        );
-    },
-    deleteUser:(data,callback)=>{
-        pool.query(`delete from registration where id=?`,
-        [data.id],
-        (error,results,fields)=>{
-            if(error)
-            {
-              return  callback(error);
-            }
-            return callback(null,results);
-        }
-        );
-    },
-    getUserByuserEmail:(email,callack)=>{
+
+  
+    getUserByuserEmail:(userid,callack)=>{
         pool.query(
-            `select * from registration where email = ?`,
-            [email],
+            `select * from admin where userid = ?`,
+            [userid],
             (error,results,fields)=>{
                 if(error)
                 {
