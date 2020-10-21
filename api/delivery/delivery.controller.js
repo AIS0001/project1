@@ -28,6 +28,7 @@ module.exports ={
             invoice: req.body.invoice, 
             datetime: req.body.datetime, 
             party: req.body.party, 
+            amount: req.body.amount, 
             //proof1: req.files['proof1'][0].filename,
             gallary: gallary,
             Remark: req.body.Remark
