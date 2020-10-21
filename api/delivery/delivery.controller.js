@@ -7,8 +7,8 @@ module.exports ={
     createdelivery:(req,res)=>{
 
         const body =req.body;
-        console.log("Request ---", req.body);
-        console.log("Request file ---", req.files);
+       //console.log("Request ---", req.body);
+        //console.log("Request file ---", req.files);
        // const salt = genSaltSync(10);
       //  body.password=hashSync(body.password,salt);
      // now here we want to acess the req.files to get the file
@@ -28,6 +28,7 @@ module.exports ={
             invoice: req.body.invoice, 
             datetime: req.body.datetime, 
             party: req.body.party, 
+            qty: req.body.qty, 
             amount: req.body.amount, 
             //proof1: req.files['proof1'][0].filename,
             gallary: gallary,
