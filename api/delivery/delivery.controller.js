@@ -24,9 +24,6 @@ module.exports ={
             gallary = gallary.substring(0, gallary.length - 1);
 
             //End Gallary
-            if (err instanceof multer.MulterError) {
-        return res.status(418).send(err.code);
-    }
         create({
             type: req.body.type,
             invoice: req.body.invoice, 
