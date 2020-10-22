@@ -3,11 +3,12 @@ const pool = require("../../config/database");
 module.exports = {
     create:(data,callback)=>{
         pool.query(
-            `INSERT INTO admin (userid,password) 
-            VALUES ( ?, ?)`,
+            `INSERT INTO admin (userid,password,type) 
+            VALUES ( ?, ?, ?)`,
         [
             data.userid,
-            data.password
+            data.password,
+            data.type,
          
         ],
         (error,results,fields)=>{

@@ -3,29 +3,32 @@ const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
 
-    creatadmin:(req,res)=>{
+   createadmin:(req,res)=>{
 
-        const body =req.body;
-        //console.log(body);
-        const salt = genSaltSync(10);
-        body.password=hashSync(body.password,salt);
-        create(body,(err,results)=>{
-            if(err)
-            {
-                console.log(err);
-                return res.status(500).json({
-                    success:0,
-                    message:"Database connection error "
-                });
-            }
-            return res.status(200).json({
-                success:1,
-                data:results
-
-            });
-
-        });
-    },
+    const body =req.body;
+    const salt = genSaltSync(10);
+   // const empid = body.empcode;
+    //console.log(body.password);
+   body.password=hashSync(body.password,salt);
+      create(body,(err,results)=>{
+        if(err)
+        {
+            console.log(err);
+         //    console.log(body);
+            return res.status(500).json({
+                status:500,
+                success:0,
+                message:"500 Internal Server Error"
+            })
+          
+        }
+        return res.status(200).json({
+            // console.log(pool1Amount);
+             success:1,
+             status:200
+         });
+    })
+},
     
     updateUser:(req,res)=>{
         const body =req.body;
