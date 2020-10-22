@@ -4,8 +4,8 @@ const express = require('express');
 
 
 const app = express();
-app.use(express.json({limit: '500mb'}));
-app.use(express.urlencoded({extended: false, limit: '500mb'}));//try now done 
+app.use(express.json({limit: '60mb'}));
+app.use(express.urlencoded({extended: false, limit: '60mb'}));//try now done 
 // bodyParser = {
 //     json: {limit: '500mb', extended: true},
 //     urlencoded: {limit: '500mb', extended: true}
