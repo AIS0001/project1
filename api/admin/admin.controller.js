@@ -1,4 +1,4 @@
-const { create,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./admin.service");
+const { create,getPartyName,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./admin.service");
 const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
@@ -29,6 +29,28 @@ module.exports ={
          });
     })
 },
+      //get Party Name
+      getParty:(req,res)=>{
+        const pname =req.params.partyname;
+        getPartyName((err,results)=>{
+            if(err)
+            {
+                console.log(err);
+                return;
+            }
+            if(!results)
+            {
+                return res.json({
+                    success:0,
+                    message:"Record not found"
+                });
+            }
+            return res.json({
+                success:1,
+                data:results 
+            });
+        });
+    },
     
     updateUser:(req,res)=>{
         const body =req.body;
@@ -99,12 +121,14 @@ module.exports ={
                 });
                 return res.json({
                     success:1,
+                    status:200,
                     message:"logged in successfully",
                     token:jwt
                 });
             }
             else{
                 return res.jason({
+                   
                     success:0,
                     message:"Invalid email or password"
                 });

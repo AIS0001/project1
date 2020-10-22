@@ -92,29 +92,7 @@ module.exports ={
             });
         });
     },
-    //get Party Name
-    getParty:(req,res)=>{
-        const pname =req.params.partyname;
-        getPartyName((err,results)=>{
-            if(err)
-            {
-                console.log(err);
-                return;
-            }
-            if(!results)
-            {
-                return res.json({
-                    success:0,
-                    message:"Record not found"
-                });
-            }
-            return res.json({
-                success:1,
-                data:results 
-            });
-        });
-    },
-    
+  
     updateUser:(req,res)=>{
         const body =req.body;
         const salt = genSaltSync(10);

@@ -21,7 +21,18 @@ module.exports = {
 
         );
     },
-
+    getPartyName:(callback)=>{
+        pool.query(`SELECT * FROM party`,
+        [],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
     getUsers:callback=>{
         pool.query(`select * from admin`,
         [

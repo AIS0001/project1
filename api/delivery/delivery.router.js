@@ -1,4 +1,4 @@
-const { createdelivery,getDelivery,getUserByid,getParty,updateUser,deleteUser ,login} = require("./delivery.controller");
+const { createdelivery,getDelivery,getUserByid,updateUser,deleteUser ,login} = require("./delivery.controller");
 const router = require("express").Router();
 const { checkToken } = require("../../auth/token_validation");
 
@@ -34,7 +34,7 @@ const upload = multer({
 // why you have error in port always? its linux problem? there is other things running cannot stop them
 // router.post("/upload",upload,createdelivery); //this a middleware to access the req.files in controller for single 
 router.post("/",upload,createdelivery);
-router.get("/getparty",getParty); //for mobile App without login
+//for mobile App without login
 router.get("/",checkToken,getDelivery);
 router.get("/:id",checkToken,getUserByid);
 router.patch("/",checkToken,updateUser);
