@@ -27,6 +27,18 @@ module.exports = {
 
     },
     
+    getPartyName:(callback)=>{
+        pool.query(`SELECT * FROM party`,
+        [],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
 
     getUsers:callback=>{
         pool.query(`select * from delivery`,
@@ -86,19 +98,6 @@ module.exports = {
             }
             return callback(null,results);
         }
-        );
-    },
-    getUserByuserEmail:(email,callack)=>{
-        pool.query(
-            `select * from registration where email = ?`,
-            [email],
-            (error,results,fields)=>{
-                if(error)
-                {
-                    callack(error);
-                }
-                return callack(null,results[0]);
-            }
         );
     }
 

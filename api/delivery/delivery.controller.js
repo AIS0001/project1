@@ -1,4 +1,4 @@
-const { create,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./delivery.service");
+const { create,getUsers,getUserByid,updateUser,deleteUser,getPartyName, getUserByuserEmail } = require("./delivery.service");
 //const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 
@@ -74,6 +74,28 @@ module.exports ={
     },
     getDelivery:(req,res)=>{
         getUsers((err,results)=>{
+            if(err)
+            {
+                console.log(err);
+                return;
+            }
+            if(!results)
+            {
+                return res.json({
+                    success:0,
+                    message:"Record not found"
+                });
+            }
+            return res.json({
+                success:1,
+                data:results 
+            });
+        });
+    },
+    //get Party Name
+    getParty:(req,res)=>{
+        const pname =req.params.partyname;
+        getPartyName((err,results)=>{
             if(err)
             {
                 console.log(err);
