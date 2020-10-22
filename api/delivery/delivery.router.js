@@ -5,6 +5,10 @@ const { checkToken } = require("../../auth/token_validation");
 const path = require("path");
 const multer = require("multer");
 // error from multeeer packege so i uninstall and re install ok?okcc
+
+var maxSize = 1000000*90 ;
+
+
 const storage = multer.diskStorage({
    destination: "./uploads/",//the error can find this path so we need to get this path
    filename: function(req, file, cb){
@@ -14,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
    storage: storage,
-   limits:{fileSize: 1000000},
+   limits:{fileSize: maxSize},
 }).fields([
  /*  {
      name: 'proof1',
