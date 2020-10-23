@@ -6,7 +6,7 @@ module.exports = {
     if(!token) return res.status(401).send('Access Denied');
 
     try{
-        const verified = verify(token,"MyLovePriyanka");
+        const verified = verify(token,"TXlMb3ZlUHJpeWFua2E=");
         req.user=verified;
         next();
     }
