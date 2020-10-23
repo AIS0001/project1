@@ -1,10 +1,14 @@
-const { getParty,createadmin,login} = require("./admin.controller");
+const { updateUserDetails,deletePartyRecord,deleteDeliveryRecord,updateDeliveryDetails,getParty,createadmin,login} = require("./admin.controller");
 const router = require("express").Router();
 const { checkToken } = require("../../auth/token_validation");
 
 router.post("/",createadmin);
 router.get("/getparty",checkToken,getParty); 
-/*router.get("/",checkToken,getDelivery);
+router.post("/updateparty",updateUserDetails);
+router.post("/updatedelivery",updateDeliveryDetails);
+router.post("/deleteparty",deletePartyRecord);
+router.post("/deletedelivery",deleteDeliveryRecord);
+/*
 router.get("/:id",checkToken,getUserByid);
 router.patch("/",checkToken,updateUser);
 router.delete("/",checkToken,deleteUser);*/

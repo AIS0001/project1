@@ -61,7 +61,68 @@ module.exports = {
         );
     },
 
-
+    updateParty:(data,callback)=>{
+        pool.query(`UPDATE party SET comp_name = ?, cust_name = ?, contact = ?, city = ?, address = ?, pincode = ? WHERE id =?;`,
+        [
+            data.comp_name,
+            data.cname,
+            data.contact,
+            data.city,
+            data.address,
+            data.pincode,
+            data.id
+        ],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        });
+    },
+    updateDelivery:(data,callback)=>{
+        pool.query(`UPDATE delivery SET type= ?,invoice= ?,party= ?,qty= ?,amount= ?,Remark= ? WHERE id =?`,
+        [
+            data.type,
+            data.invoice,
+            data.party,
+            data.qty,
+            data.amount,
+            data.Remark ,
+            data.id
+        ],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        });
+    },
+    deleteParty:(data, callback)=>{
+        pool.query(`delete from party where id=?`,
+        [ data.id],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
+    deleteDelivery:(data, callback)=>{
+        pool.query(`delete from delivery where id=?`,
+        [ data.id],
+        (error,results,fields)=>{
+            if(error)
+            {
+              return  callback(error);
+            }
+            return callback(null,results);
+        }
+        );
+    },
   
     getUserByuserEmail:(userid,callack)=>{
         pool.query(

@@ -57,37 +57,6 @@ module.exports = {
         );
     },
 
-    updateUser:(data,callback)=>{
-        pool.query(`update registration set fname=?,lname-?,gender=?,email=?,password=?,contact=? where id=?`,
-        [
-            data.fname,
-            data.lname,
-            data.gender,
-            data.email,
-            data.password,
-            data.contact,
-            data.id
-        ],
-        (error,results,fields)=>{
-            if(error)
-            {
-              return  callack(error);
-            }
-            return callback(null,results);
-        }
-        );
-    },
-    deleteUser:(data,callback)=>{
-        pool.query(`delete from registration where id=?`,
-        [data.id],
-        (error,results,fields)=>{
-            if(error)
-            {
-              return  callback(error);
-            }
-            return callback(null,results);
-        }
-        );
-    }
+  
 
 };

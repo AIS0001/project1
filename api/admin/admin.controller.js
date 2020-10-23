@@ -1,4 +1,4 @@
-const { create,getPartyName,getUsers,getUserByid,updateUser,deleteUser, getUserByuserEmail } = require("./admin.service");
+const { create,getPartyName,updateParty,deleteDelivery,deleteParty, getUserByuserEmail, updateDelivery } = require("./admin.service");
 const { genSaltSync,hashSync,compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports ={
@@ -52,29 +52,41 @@ module.exports ={
         });
     },
     
-    updateUser:(req,res)=>{
+    updateUserDetails:(req,res)=>{
         const body =req.body;
-        const salt = genSaltSync(10);
-        body.password=hashSync(body.password,salt);
-        updateUser(body,(err,results)=>{
+        updateParty(body,(err,results)=>{
             if(err)
             {
                console.log(err);
                return;
             }
             return res.json({
+                status:200,
                 success:1,
                 data:"Record updates successfully"
             });
         });
-
-
+    },
+    updateDeliveryDetails:(req,res)=>{
+        const body =req.body;
+        updateDelivery(body,(err,results)=>{
+            if(err)
+            {
+               console.log(err);
+               return;
+            }
+            return res.json({
+                status:200,
+                success:1,
+                data:"Record updates successfully"
+            });
+        });
     },
 
-    deleteUser:(req,res)=>{
+    deletePartyRecord:(req,res)=>{
        // const id = req.param.id;
        const data = req.body;
-        deleteUser(data,(err,results)=>{
+        deleteParty(data,(err,results)=>{
             if(err)
             {
                 console.log(err);
@@ -83,17 +95,44 @@ module.exports ={
             if(!results)
             {
                 return res.json({
+                    status:404,
                     success:0,
                     message:"Record not found"
                 });
             }
             return res.json({
+                status:200,
                 success:1,
                 message:"Record deleted successfully"
             })
         });
 
     },
+    deleteDeliveryRecord:(req,res)=>{
+        // const id = req.param.id;
+        const data = req.body;
+         deleteDelivery(data,(err,results)=>{
+             if(err)
+             {
+                 console.log(err);
+                 return;
+             }
+             if(!results)
+             {
+                 return res.json({
+                     status:404,
+                     success:0,
+                     message:"Record not found"
+                 });
+             }
+             return res.json({
+                 status:200,
+                 success:1,
+                 message:"Record deleted successfully"
+             })
+         });
+ 
+     },
 
     login:(req,res)=>{
         const body = req.body;
