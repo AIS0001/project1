@@ -3,7 +3,7 @@ const { verify } = require("jsonwebtoken");
 module.exports = {
     checkToken:(req,res,next)=>{
         const token = req.header('auth-token');
-        console.log(token);
+       // console.log(token);
     if(!token) return res.status(401).send('Access Denied');
 
     try{
