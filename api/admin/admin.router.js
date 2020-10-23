@@ -3,7 +3,7 @@ const router = require("express").Router();
 const { checkToken } = require("../../auth/token_validation");
 
 router.post("/",createadmin);
-router.get("/getparty",checkToken,getParty); 
+router.post("/getparty",checkToken,getParty); 
 router.post("/updateparty",updateUserDetails);
 router.post("/updatedelivery",updateDeliveryDetails);
 router.post("/deleteparty",deletePartyRecord);
