@@ -35,10 +35,10 @@ const upload = multer({
 // router.post("/upload",upload,createdelivery); //this a middleware to access the req.files in controller for single 
 router.post("/",upload,createdelivery);
 //for mobile App without login
-router.get("/",checkToken,getDelivery);
-router.get("/:id",checkToken,getUserByid);
-router.patch("/",checkToken,updateUser);
-router.delete("/",checkToken,deleteUser);
+router.get("/",getDelivery);
+router.get("/:id",getUserByid);
+router.patch("/",updateUser);
+router.delete("/",deleteUser);
 router.post("/login",login);
 // i think there is error in body parser
 module.exports = router;
