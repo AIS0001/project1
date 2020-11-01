@@ -62,7 +62,7 @@ module.exports = {
     },
 
     updateParty:(data,callback)=>{
-        pool.query(`UPDATE party SET comp_name = "dsfsdf", cust_name = "piaaa", contact = 554, city = "1dsd", pincode = "586786" WHERE id =31`,
+        pool.query(`UPDATE party SET comp_name = "dsfsdf", cust_name = "piaaa", contact = 554, city = "1dsd", address = "dsdfsdf", pincode = "586786" WHERE id =31`,
         [
           
         ],
