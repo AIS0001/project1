@@ -40,5 +40,11 @@ router.get("/:id",getUserByid);
 router.patch("/",updateUser);
 router.delete("/",deleteUser);
 router.post("/login",login);
+
+router.get('/image/:imageName', (req,res)=> {
+   //open the chrome 
+   res.sendFile(path.join(__dirname, `../../uploads/${req.params.imageName}`));//ypu understand what happened?
+  
+;})
 // i think there is error in body parser
 module.exports = router;
